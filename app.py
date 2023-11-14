@@ -1,21 +1,28 @@
-# import libraries
 import pandas as pd
-dataFile = "review.txt"
-# read data from the text file
-with open(dataFile, "r") as file:
-    data = file.read()
-    # split the data into individual reviews
-reviews = data.strip().split("\n\n")
-review_dicts = []
-for review in reviews:
-    review_dict = {}
-    lines = review.split('\n')
-    for line in lines:
-        # Split each line at the first colon, assuming the field name may contain colons
-        parts = line.split(':', 1)
-        if len(parts) == 2:
-            field_name, field_value = parts
-            review_dict[field_name.strip()] = field_value.strip()
-    review_dicts.append(review_dict)
-    df = pd.DataFrame(review_dicts)
-    print(df)
+# Initialize an empty list to store the records
+records = []
+
+# file_path=
+# Open and read the text file
+with open(r'foods.txt', 'r', encoding='latin1') as file:
+    record = {}  # Initialize an empty dictionary for each record
+    for line in file:
+        line = line.strip()
+        if not line:  # Check for empty line to separate records
+            if record:  # Append the record dictionary to the list
+                records.append(record)
+            record = {}  # Initialize a new record
+        elif ':' in line:  # Check if the line contains a colon
+            key, value = line.split(': ', 1)  # Split each line into key and value
+            record[key] = value
+
+# Append the last record (if it exists) since the file may not end with an empty line
+if record:
+    records.append(record)
+
+# Create a DataFrame from the list of records
+df = pd.DataFrame(records)
+
+# Show the DataFrame
+df
+    

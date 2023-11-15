@@ -1,4 +1,4 @@
-# Food Review Sentiment Analysis and Classification
+# Food Review Analysis
 
 ## Overview
 

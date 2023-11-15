@@ -23,6 +23,6 @@ if record:
 # Create a DataFrame from the list of records
 df = pd.DataFrame(records)
 
-# Show the DataFrame
+# Show the DataFrame.
 df
     

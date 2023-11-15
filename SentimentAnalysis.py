@@ -205,3 +205,116 @@ report = classification_report(y_test, y_pred)
 print("Accuracy:", accuracy)
 print("Classification Report:\n", report)
 
+
+#########################################
+
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+# Bar plot for the distribution of sentiment categories
+plt.figure(figsize=(8, 5))
+sns.countplot(x='sentiment', data=df, palette='viridis')
+plt.title('Distribution of Sentiment Categories')
+plt.xlabel('Sentiment')
+plt.ylabel('Count')
+plt.show()
+
+# Count plot for the percentage upvotes
+plt.figure(figsize=(8, 5))
+sns.countplot(x='% Upvote', data=df, order=['Empty', '0-20%', '20-40%', '40-60%', '60-80%', '80-100%'], palette='muted')
+plt.title('Distribution of Percentage Upvotes')
+plt.xlabel('Percentage Upvote')
+plt.ylabel('Count')
+plt.show()
+
+# Histogram for the helpfulness ratio
+plt.figure(figsize=(8, 5))
+sns.histplot(df['Helpful %'], bins=20, kde=True, color='skyblue')
+plt.title('Distribution of Helpful %')
+plt.xlabel('Helpful %')
+plt.ylabel('Frequency')
+plt.show()
+
+
+from wordcloud import WordCloud
+import matplotlib.pyplot as plt
+
+# Word cloud for positive reviews
+positive_reviews = ' '.join(df[df['sentiment'] == 'Positive']['review'])
+wordcloud_positive = WordCloud(width=800, height=400, background_color='white').generate(positive_reviews)
+plt.figure(figsize=(10, 5))
+plt.imshow(wordcloud_positive, interpolation='bilinear')
+plt.axis('off')
+plt.title('Word Cloud for Positive Reviews')
+plt.show()
+
+# Word cloud for negative reviews
+negative_reviews = ' '.join(df[df['sentiment'] == 'Negative']['review'])
+wordcloud_negative = WordCloud(width=800, height=400, background_color='white').generate(negative_reviews)
+plt.figure(figsize=(10, 5))
+plt.imshow(wordcloud_negative, interpolation='bilinear')
+plt.axis('off')
+plt.title('Word Cloud for Negative Reviews')
+plt.show()
+
+
+# Concatenate all reviews into a single string
+all_reviews = ' '.join(df['review'])
+
+wordcloud = WordCloud(width=800, height=400, background_color='white').generate(all_reviews)
+plt.figure(figsize=(10, 5))
+plt.imshow(wordcloud, interpolation='bilinear')
+plt.axis('off')
+plt.title('Word Cloud of Reviews')
+plt.show()
+
+# Bar plot for the distribution of review scores
+plt.figure(figsize=(8, 5))
+sns.countplot(x='score', data=df, palette='Set2')
+plt.title('Distribution of Review Scores')
+plt.xlabel('Review Score')
+plt.ylabel('Count')
+plt.show()
+
+# Scatter plot for the relationship between helpfulness and review scores
+plt.figure(figsize=(10, 6))
+sns.scatterplot(x='HFN', y='score', data=df, hue='sentiment', palette='coolwarm', alpha=0.7)
+plt.title('Relationship between Helpful Votes and Review Scores')
+plt.xlabel('Number of Helpful Votes')
+plt.ylabel('Review Score')
+plt.legend()
+plt.show()
+
+
+
+# Bar plot for the distribution of review lengths
+df['review_length'] = df['review'].apply(len)
+
+plt.figure(figsize=(10, 6))
+sns.histplot(df['review_length'], bins=30, kde=True, color='orange')
+plt.title('Distribution of Review Lengths')
+plt.xlabel('Review Length')
+plt.ylabel('Frequency')
+plt.show()
+
+# Time series plot for the number of reviews over time
+df['time'] = pd.to_datetime(df['time'], unit='s')
+df_time_series = df.resample('M', on='time').size()
+
+plt.figure(figsize=(12, 6))
+df_time_series.plot(color='purple')
+plt.title('Number of Reviews Over Time')
+plt.xlabel('Time')
+plt.ylabel('Number of Reviews')
+plt.show()
+
+# Convert 'score' to numeric values
+df['score'] = pd.to_numeric(df['score'], errors='coerce')
+
+# Box plot for the distribution of review scores based on sentiment
+plt.figure(figsize=(10, 6))
+sns.boxplot(x='sentiment', y='score', data=df, palette='coolwarm')
+plt.title('Distribution of Review Scores based on Sentiment')
+plt.xlabel('Sentiment')
+plt.ylabel('Review Score')
+plt.show()

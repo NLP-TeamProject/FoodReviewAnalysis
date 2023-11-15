@@ -44,3 +44,29 @@ df[df.duplicated()]
 df = df.drop_duplicates(subset=['productid','userid','time','review'],keep='first',inplace=False)
 
 ################################
+
+#Remove Stopwords
+stop_words = set(stopwords.words('english'))
+ 
+# function to remove stopwords
+def remove_stopwords(text):
+    no_stopword_text = [w for w in text.split() if not w in stop_words]
+    return ' '.join(no_stopword_text)
+ 
+#Clean text
+def clean_text(text):
+    text = text.lower()
+    text = re.sub("[^a-zA-Z]"," ",text)
+    text = ' '.join(text.split())
+    return text
+ 
+#stemming
+stemmer = SnowballStemmer("english")
+def stemming(sentence):
+    stemSentence = ""
+    for word in sentence.split():
+        stem = stemmer.stem(word)
+        stemSentence += stem
+        stemSentence += " "
+    stemSentence = stemSentence.strip()
+    return stemSentence

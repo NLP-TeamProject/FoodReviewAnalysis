@@ -169,3 +169,35 @@ print("Accuracy:", accuracy)
 print("Classification Report:\n", report)
 
 ####################################
+
+from sklearn.linear_model import LogisticRegression
+from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import accuracy_score, classification_report
+
+df = df.copy()
+
+X = df['review']
+y = df['score']
+
+# Split data into training and testing sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=0)
+
+# Create a Bag-of-Words representation of the text data
+vectorizer = CountVectorizer(stop_words='english')
+X_train_vectorized = vectorizer.fit_transform(X_train)
+X_test_vectorized = vectorizer.transform(X_test)
+
+# Create and train the logistic regression model
+clf = LogisticRegression(max_iter=1000)
+clf.fit(X_train_vectorized, y_train)
+
+# Make predictions on the testing data
+y_pred = clf.predict(X_test_vectorized)
+
+# Evaluate the model
+accuracy = accuracy_score(y_test, y_pred)
+report = classification_report(y_test, y_pred)
+
+print("Accuracy:", accuracy)
+print("Classification Report:\n", report)

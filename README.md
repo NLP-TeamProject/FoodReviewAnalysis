@@ -1,26 +1,62 @@
-This repository contains a Python script for sentiment analysis and review classification based on user reviews from a text dataset. The script utilizes Natural Language Processing (NLP) techniques and machine learning models to analyze sentiments and predict review ratings.
+# Food Review Sentiment Analysis and Classification
 
-# FoodReviewAnalysis
+## Overview
 
-The Food Review Analysis Project is a data-driven analysis that leverages sentiment analysis and text summarization techniques in Python to gain insights from a large corpus of food reviews.
-This project aims to extract valuable information from textual data, providing valuable insights into consumer preferences and restaurant performance.
+This project focuses on sentiment analysis and classification of food product reviews using Natural Language Processing (NLP) techniques. The goal is to gain insights into user sentiments, classify reviews into positive or negative categories, and explore relationships between review characteristics and user engagement.
 
-Key Components of the Project:
+## Table of Contents
 
-Data Collection:
-Gathering a diverse dataset of food reviews from various sources, such as social media, review websites, or APIs.
-Preprocessing the data to remove noise, including HTML tags, special characters, and irrelevant information.
+1. [Introduction](#introduction)
+2. [Data Loading and Preprocessing](#data-loading-and-preprocessing)
+3. [Sentiment Analysis](#sentiment-analysis)
+4. [Review Classification](#review-classification)
+    - [Naive Bayes Model](#naive-bayes-model)
+    - [Logistic Regression Model](#logistic-regression-model)
+5. [Exploratory Data Analysis (EDA)](#exploratory-data-analysis)
+6. [Review Characteristics Analysis](#review-characteristics-analysis)
+7. [Conclusion](#conclusion)
 
-Sentiment Analysis:
-Utilizing Natural Language Processing (NLP) libraries like NLTK, spaCy, or TextBlob to conduct sentiment analysis on the reviews.
-Determining the sentiment of each review as positive, negative, or neutral.
-Calculating sentiment scores or polarities to quantify the sentiment strength.
+## Introduction
 
-Text Summarization:
-Applying text summarization techniques, such as extractive or abstractive summarization, to condense the lengthy reviews into concise summaries.
-Utilizing libraries or Transformers to generate summaries that capture the essential information.
+The project involves analyzing a dataset of food product reviews. The main objectives include preprocessing the data, conducting sentiment analysis, implementing review classification models, performing exploratory data analysis (EDA), and analyzing review characteristics.
 
-Visualization and Insights:
-Creating visualizations, such as word clouds, sentiment distributions, and summary statistics, to provide a holistic view of the data.
-Extracting meaningful insights from the sentiment and summarization results, including identifying common positive and negative aspects of the reviewed foods.
+## Data Loading and Preprocessing
 
+- The dataset is loaded from a text file containing food product reviews.
+- Relevant columns such as 'productid', 'userid', 'helpfulness', 'score', 'time', 'summary', and 'review' are extracted.
+- Data is cleaned by handling missing values, removing duplicates, and combining relevant columns.
+
+## Sentiment Analysis
+
+- Text preprocessing techniques such as removing stopwords and stemming are applied to the review text.
+- Sentiment intensity is evaluated using the VADER sentiment analysis tool.
+- Reviews are categorized into positive, negative, or neutral sentiments based on the compound scores.
+
+## Review Classification
+
+### Naive Bayes Model
+
+- A Naive Bayes model is implemented to classify reviews into positive or negative categories.
+- The review text is converted into a Bag-of-Words representation using CountVectorizer.
+- The model is trained on the training set and evaluated on the testing set.
+
+### Logistic Regression Model
+
+- A Logistic Regression model is implemented for review classification.
+- Stop words are removed during CountVectorizer processing.
+- The model is trained and evaluated on the training and testing sets, respectively.
+
+## Exploratory Data Analysis (EDA)
+
+- Visualizations include bar plots for sentiment distribution, count plots for percentage upvotes, and histograms for helpfulness ratio.
+- Word clouds are generated for positive and negative reviews, as well as an overall word cloud.
+
+## Review Characteristics Analysis
+
+- Review scores are analyzed through a bar plot to showcase the distribution of scores.
+- A scatter plot illustrates the relationship between the number of helpful votes and review scores.
+- A box plot depicts the distribution of review scores based on sentiment.
+
+## Conclusion
+
+This project provides a comprehensive analysis of sentiment in food product reviews, including the implementation of classification models for positive and negative reviews. The EDA visualizations offer insights into sentiment distribution, helpfulness ratio, and review characteristics. The project aims to enhance understanding of user sentiments and preferences in the context of food product reviews.

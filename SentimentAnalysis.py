@@ -113,3 +113,59 @@ df
 
 
 "+++++++++++++++++++++++++++++++++++++++++++"
+
+
+from sklearn.model_selection import train_test_split
+from sklearn.feature_extraction.text import CountVectorizer
+
+# Assuming you have a DataFrame 'df' with columns 'review_description' and 'rating'
+X = df['review']
+y = df['score']
+
+# Convert ratings to numeric values
+y = pd.to_numeric(y, errors='coerce')  # 'coerce' will turn any non-numeric value to NaN
+
+# Convert ratings to binary sentiment labels (1 for positive, 0 for negative)
+y = (y > 3).astype(int)
+
+# Split data into training and testing sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# Create a Bag-of-Words representation of the text data
+vectorizer = CountVectorizer()
+X_train_vectorized = vectorizer.fit_transform(X_train)
+X_test_vectorized = vectorizer.transform(X_test)
+
+from sklearn.naive_bayes import MultinomialNB
+
+# Create and train the model
+model = MultinomialNB()
+model.fit(X_train_vectorized, y_train)
+
+# Get the feature names (unique words)
+feature_names = vectorizer.get_feature_names_out()
+
+# Get the BoW representation for a specific document (e.g., the first document)
+document_bow = X_vectorized[0]
+
+# Convert the sparse matrix to a dense array for better readability
+dense_array = document_bow.toarray()
+
+# Create a DataFrame to display the results
+df_bow = pd.DataFrame(dense_array, columns=feature_names)
+
+# Display the BoW representation for the first document
+print(df_bow)
+from sklearn.metrics import accuracy_score, classification_report
+
+# Make predictions on the testing data
+y_pred = model.predict(X_test_vectorized)
+
+# Evaluate the model
+accuracy = accuracy_score(y_test, y_pred)
+report = classification_report(y_test, y_pred)
+
+print("Accuracy:", accuracy)
+print("Classification Report:\n", report)
+
+####################################

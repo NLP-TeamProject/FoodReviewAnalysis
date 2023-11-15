@@ -25,4 +25,3 @@ df = pd.DataFrame(records)
 
 # Show the DataFrame.
 df
-    

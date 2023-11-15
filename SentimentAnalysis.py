@@ -195,9 +195,4 @@ clf.fit(X_train_vectorized, y_train)
 # Make predictions on the testing data
 y_pred = clf.predict(X_test_vectorized)
 
-# Evaluate the model
-accuracy = accuracy_score(y_test, y_pred)
-report = classification_report(y_test, y_pred)
 
-print("Accuracy:", accuracy)
-print("Classification Report:\n", report)

@@ -15,6 +15,8 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score, classification_report
+from wordcloud import WordCloud
+
 
 nltk.download('stopwords')
 nltk.download('punkt')
@@ -208,8 +210,7 @@ print("Classification Report:\n", report)
 
 #########################################
 
-import seaborn as sns
-import matplotlib.pyplot as plt
+
 
 # Bar plot for the distribution of sentiment categories
 plt.figure(figsize=(8, 5))
@@ -236,8 +237,7 @@ plt.ylabel('Frequency')
 plt.show()
 
 
-from wordcloud import WordCloud
-import matplotlib.pyplot as plt
+
 
 # Word cloud for positive reviews
 positive_reviews = ' '.join(df[df['sentiment'] == 'Positive']['review'])

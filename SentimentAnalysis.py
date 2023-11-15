@@ -7,6 +7,14 @@ import nltk
 from nltk.corpus import stopwords
 from nltk.stem.snowball import SnowballStemmer
 from nltk.sentiment import SentimentIntensityAnalyzer
+from sklearn.model_selection import train_test_split
+from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.naive_bayes import MultinomialNB
+from sklearn.metrics import accuracy_score, classification_report
+from sklearn.linear_model import LogisticRegression
+from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import accuracy_score, classification_report
 
 nltk.download('stopwords')
 nltk.download('punkt')
@@ -115,8 +123,7 @@ df
 "+++++++++++++++++++++++++++++++++++++++++++"
 
 
-from sklearn.model_selection import train_test_split
-from sklearn.feature_extraction.text import CountVectorizer
+
 
 # Assuming you have a DataFrame 'df' with columns 'review_description' and 'rating'
 X = df['review']
@@ -136,7 +143,6 @@ vectorizer = CountVectorizer()
 X_train_vectorized = vectorizer.fit_transform(X_train)
 X_test_vectorized = vectorizer.transform(X_test)
 
-from sklearn.naive_bayes import MultinomialNB
 
 # Create and train the model
 model = MultinomialNB()
@@ -156,7 +162,6 @@ df_bow = pd.DataFrame(dense_array, columns=feature_names)
 
 # Display the BoW representation for the first document
 print(df_bow)
-from sklearn.metrics import accuracy_score, classification_report
 
 # Make predictions on the testing data
 y_pred = model.predict(X_test_vectorized)
@@ -170,10 +175,7 @@ print("Classification Report:\n", report)
 
 ####################################
 
-from sklearn.linear_model import LogisticRegression
-from sklearn.feature_extraction.text import CountVectorizer
-from sklearn.model_selection import train_test_split
-from sklearn.metrics import accuracy_score, classification_report
+
 
 df = df.copy()
 

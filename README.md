@@ -1,6 +1,6 @@
 This repository contains a Python script for sentiment analysis and review classification based on user reviews from a text dataset. The script utilizes Natural Language Processing (NLP) techniques and machine learning models to analyze sentiments and predict review ratings.
 
-# FoodReviewAnalysis_Group4
+# FoodReviewAnalysis
 
 The Food Review Analysis Project is a data-driven analysis that leverages sentiment analysis and text summarization techniques in Python to gain insights from a large corpus of food reviews.
 This project aims to extract valuable information from textual data, providing valuable insights into consumer preferences and restaurant performance.

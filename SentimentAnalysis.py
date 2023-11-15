@@ -1,4 +1,19 @@
+import re
 import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+import nltk
+from nltk.corpus import stopwords
+from nltk.stem.snowball import SnowballStemmer
+from nltk.sentiment import SentimentIntensityAnalyzer
+
+nltk.download('stopwords')
+nltk.download('punkt')
+nltk.download('vader_lexicon')
+nltk.download('vader_lexicon')
+
+
 # Initialize an empty list to store the records
 records = []
 

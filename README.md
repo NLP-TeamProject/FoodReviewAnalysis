@@ -24,30 +24,3 @@ Visualization and Insights:
 Creating visualizations, such as word clouds, sentiment distributions, and summary statistics, to provide a holistic view of the data.
 Extracting meaningful insights from the sentiment and summarization results, including identifying common positive and negative aspects of the reviewed foods.
 
-
-Overview
-The script performs the following tasks:
-
-Data Loading and Cleaning:
-
-Reads user reviews from a text file (foods.txt).
-Converts the data into a Pandas DataFrame for easier analysis.
-Cleans and preprocesses the data by removing duplicates.
-Sentiment Analysis:
-
-Combines the 'review' and 'summary' columns.
-Applies text preprocessing (lowercasing, removing non-alphabetic characters).
-Uses the VADER sentiment analyzer to assign a compound sentiment score to each review.
-Classifies reviews as 'Positive,' 'Negative,' or 'Neutral' based on the compound score.
-Review Classification (Naive Bayes):
-
-Prepares the data for classification by splitting it into training and testing sets.
-Converts text data into a Bag-of-Words representation using CountVectorizer.
-Trains a Multinomial Naive Bayes model.
-
-Evaluates the model's accuracy and provides a classification report.
-Review Classification (Logistic Regression):
-
-Prepares the data similarly to the Naive Bayes model.
-Trains a Logistic Regression model.
-Evaluates the model's accuracy and provides a classification report.

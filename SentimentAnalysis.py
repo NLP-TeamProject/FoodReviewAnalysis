@@ -43,21 +43,4 @@ df.duplicated().sum()
 df[df.duplicated()]
 df = df.drop_duplicates(subset=['productid','userid','time','review'],keep='first',inplace=False)
 
-"##########################""#########################"
-
-#columns are renamed
-df.columns=['productid','userid','name','helpfulness','score','time','summary','review']
-df
-
-df['HFN'] = df['helpfulness'].apply(lambda x: int(x.split('/')[0]))
-df['HFD'] = df['helpfulness'].apply(lambda x: int(x.split('/')[1]))
-
-df['Helpful %'] = np.where(df['HFD'] > 0, df['HFN'] / df['HFD'], -1)
-df['% Upvote'] = pd.cut(df['Helpful %'], bins=[-1, 0, 0.2, 0.4, 0.6, 0.8, 1.0], labels=['Empty', '0-20%', '20-40%', '40-60%', '60-80%', '80-100%'], include_lowest=True)
-
-df.isna().sum()
-df.duplicated().sum()
-df[df.duplicated()]
-df = df.drop_duplicates(subset=['productid','userid','time','review'],keep='first',inplace=False)
-
-"##########################"
+################################

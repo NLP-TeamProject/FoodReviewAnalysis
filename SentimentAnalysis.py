@@ -85,3 +85,31 @@ def stemming(sentence):
         stemSentence += " "
     stemSentence = stemSentence.strip()
     return stemSentence
+# Combine 'review' and 'summary' and create a copy of the DataFrame
+df = df.copy()
+df['review'] = df['review'] + ' ' + df['summary']
+
+# Ensure the 'review' column has the appropriate data type
+df['review'] = df['review'].astype(str)
+
+# Apply preprocessing functions
+df['review'] = df['review'].apply(preprocessing)
+# Initialize SentimentIntensityAnalyzer
+sia = SentimentIntensityAnalyzer()
+
+df['compound_score'] = df['review'].apply(lambda x: sia.polarity_scores(x)['compound'])
+
+def sentiment_types(compound_score):
+    if compound_score > 0.1:
+        return 'Positive'
+    elif compound_score < -0.1:
+        return 'Negative'
+    else:
+        return 'Neutral'
+
+df['sentiment'] = df['compound_score'].apply(sentiment_types)
+df
+
+
+
+"+++++++++++++++++++++++++++++++++++++++++++"

@@ -1,7 +1,5 @@
 # FoodReviewAnalysis_Group4
 
-Certainly! Below is a template for documenting your code in a professional manner. This documentation provides an overview of the code, its purpose, usage, and important considerations.
-
 # Sentiment Analysis and Machine Learning Documentation
 
 ## Overview
@@ -10,105 +8,122 @@ This document serves as documentation for the sentiment analysis code, encompass
 
 ## Table of Contents
 
-1. [Dependencies](#dependencies)
-2. [Data Loading](#data-loading)
-3. [Text Preprocessing](#text-preprocessing)
-4. [Sentiment Analysis](#sentiment-analysis)
-5. [Visualization](#visualization)
-6. [Model Training](#model-training)
-    - [Logistic Regression with BoW](#logistic-regression-with-bow)
-    - [Naive Bayes Classifier with BoW](#naive-bayes-classifier-with-bow)
-    - [Logistic Regression with TF-IDF](#logistic-regression-with-tf-idf)
-    - [Naive Bayes Classifier with TF-IDF](#naive-bayes-classifier-with-tf-idf)
-7. [Model Evaluation](#model-evaluation)
-8. [Save and Load Models](#save-and-load-models)
-9. [Considerations](#considerations)
-10. [Conclusion](#conclusion)
+1. Dependencies
+2. Data Loading
+3. Text Preprocessing
+4. Sentiment Analysis
+5. Visualization
+6. Model Training
+    - Logistic Regression with BoW
+    - Naive Bayes Classifier with BoW
+    - Logistic Regression with TF-IDF
+    - Naive Bayes Classifier with TF-IDF
+7. Model Evaluation
+8. Save and Load Models
+9. Considerations
+10. Conclusion
 
-## Dependencies <a name="dependencies"></a>
+## Dependencies
 
-- Google Colab
-- pandas
-- numpy
-- matplotlib
-- seaborn
-- wordcloud
-- nltk
-- beautifulsoup4
-- tqdm
-- scikit-learn
+### Google Colab
+Google Colab is used as the development environment, allowing for easy collaboration and access to GPU resources.
 
-## Data Loading <a name="data-loading"></a>
+### pandas, numpy
+Pandas and NumPy are fundamental libraries for data manipulation and numerical operations.
 
-The code loads user reviews from a text file using Google Colab. Each review is parsed, and relevant information is extracted, resulting in a Pandas DataFrame.
+### matplotlib, seaborn
+Matplotlib and Seaborn are used for data visualization, aiding in the analysis of distribution patterns and trends.
 
-## Text Preprocessing <a name="text-preprocessing"></a>
+### wordcloud
+The WordCloud library is employed to create visually appealing word clouds for positive and negative reviews.
 
-The preprocessing steps include:
-- Removal of HTML tags and URLs
-- Conversion to lowercase
-- Removal of non-alphabetic characters
-- Removal of stopwords
-- Stemming
+### nltk
+The Natural Language Toolkit (NLTK) is utilized for natural language processing tasks, including stopword removal and stemming.
 
-## Sentiment Analysis <a name="sentiment-analysis"></a>
+### beautifulsoup4
+Beautiful Soup is employed to remove HTML tags from the text.
 
-The sentiment analysis utilizes the VADER sentiment intensity analyzer to assign a compound score to each review. The compound score is used to categorize reviews as positive, negative, or neutral.
+### tqdm
+TQDM is used to display progress bars, enhancing the user experience during lengthy operations.
 
-## Visualization <a name="visualization"></a>
+### scikit-learn
+Scikit-learn provides tools for machine learning, including model training, evaluation, and hyperparameter tuning.
 
-- Distribution of sentiment categories
-- Word clouds for positive and negative reviews
-- Distribution of review scores
-- Distribution of review lengths
-- Time series plot for the number of reviews over time
+## Data Loading
 
-## Model Training <a name="model-training"></a>
+The code loads user reviews from a text file using Google Colab. Each review is parsed, and relevant information is extracted, resulting in a Pandas DataFrame. This step is essential for subsequent analysis and model training.
 
-The code trains machine learning models for sentiment classification using both BoW and TF-IDF representations. It includes:
+## Text Preprocessing
 
-### Logistic Regression with BoW <a name="logistic-regression-with-bow"></a>
+### Steps
+1. **HTML and URL Removal:** HTML tags and URLs are removed from the reviews.
+2. **Lowercasing:** The text is converted to lowercase for consistency.
+3. **Non-Alphabetic Characters Removal:** Non-alphabetic characters are removed, retaining only letters.
+4. **Stopword Removal:** Common English stopwords are removed to focus on meaningful words.
+5. **Stemming:** Words are reduced to their root form using stemming.
 
-- Hyperparameter tuning with different values of C
-- Model training and evaluation
-- Model saving to a pickle file
+These preprocessing steps ensure that the text data is clean and ready for analysis.
 
-### Naive Bayes Classifier with BoW <a name="naive-bayes-classifier-with-bow"></a>
+## Sentiment Analysis
 
-- Hyperparameter tuning with different values of alpha
-- Model training and evaluation
-- Model saving to a pickle file
+The VADER sentiment intensity analyzer is employed to assign a compound score to each review. The compound score is used to categorize reviews as positive, negative, or neutral.
 
-### Logistic Regression with TF-IDF <a name="logistic-regression-with-tf-idf"></a>
+## Visualization
 
-- Hyperparameter tuning with different values of C
-- Model training and evaluation
-- Model saving to a pickle file
+### Plots
+1. **Distribution of Sentiment Categories:** A bar plot illustrates the distribution of positive, negative, and neutral sentiments.
+2. **Word Clouds:** Word clouds visually represent the most frequent words in positive and negative reviews.
+3. **Distribution of Review Scores:** A bar plot showcases the distribution of review scores.
+4. **Distribution of Review Lengths:** A bar plot displays the distribution of review lengths.
+5. **Time Series Plot:** A time series plot illustrates the number of reviews over time.
 
-### Naive Bayes Classifier with TF-IDF <a name="naive-bayes-classifier-with-tf-idf"></a>
+These visualizations provide insights into the data distribution and trends.
 
-- Hyperparameter tuning with different values of alpha
-- Model training and evaluation
-- Model saving to a pickle file
+## Model Training
 
-## Model Evaluation <a name="model-evaluation"></a>
+### Logistic Regression with BoW
 
-The final model, Logistic Regression with TF-IDF, is evaluated using accuracy scores and a confusion matrix.
+1. **Hyperparameter Tuning:** Different values of C are tested.
+2. **Model Training and Evaluation:** The logistic regression model is trained and evaluated.
+3. **Model Saving:** The trained model is saved to a pickle file.
 
-## Save and Load Models <a name="save-and-load-models"></a>
+### Naive Bayes Classifier with BoW
+
+1. **Hyperparameter Tuning:** Different values of alpha are tested.
+2. **Model Training and Evaluation:** The Naive Bayes classifier is trained and evaluated.
+3. **Model Saving:** The trained model is saved to a pickle file.
+
+### Logistic Regression with TF-IDF
+
+1. **Hyperparameter Tuning:** Different values of C are tested.
+2. **Model Training and Evaluation:** The logistic regression model with TF-IDF is trained and evaluated.
+3. **Model Saving:** The trained model is saved to a pickle file.
+
+### Naive Bayes Classifier with TF-IDF
+
+1. **Hyperparameter Tuning:** Different values of alpha are tested.
+2. **Model Training and Evaluation:** The Naive Bayes classifier with TF-IDF is trained and evaluated.
+3. **Model Saving:** The trained model is saved to a pickle file.
+
+## Model Evaluation
+
+The final model, Logistic Regression with TF-IDF, is evaluated using accuracy scores and a confusion matrix. This step assesses the model's performance on the test dataset.
+
+## Save and Load Models
 
 The code includes functionality to save both the TF-IDF vectorizer and the final model to pickle files. This is crucial for model deployment and future use.
 
-## Considerations <a name="considerations"></a>
+## Considerations
 
-- Handling imbalanced classes: Down-sampling is applied to balance the class distribution.
-- Handling NaN values: Rows with NaN scores are removed.
-- Model selection: Logistic Regression and Naive Bayes models are explored for their suitability in sentiment analysis.
+### Handling Imbalanced Classes
+Down-sampling is applied to balance the class distribution, ensuring the model is not biased toward the majority class.
 
-## Conclusion <a name="conclusion"></a>
+### Handling NaN Values
+Rows with NaN scores are removed to prevent issues during model training.
 
-This code provides a comprehensive pipeline for sentiment analysis, encompassing data loading, preprocessing, model training, and evaluation. It demonstrates the use of both BoW and TF-IDF representations with different machine learning models. The final model achieves satisfactory accuracy in sentiment classification.
+### Model Selection
+Logistic Regression and Naive Bayes models are explored for their suitability in sentiment analysis. These models are known for their simplicity and effectiveness in text classification tasks.
 
----
+## Conclusion
 
-Feel free to customize this documentation based on your specific code and requirements.
+The code provides a comprehensive pipeline for sentiment analysis, covering data loading, preprocessing, model training, and evaluation. By utilizing both BoW and TF-IDF representations with different machine learning models, the code achieves satisfactory accuracy in sentiment classification. The final model can be saved and deployed for real-world applications.

@@ -1,0 +1,5 @@
+services:
+  - type: web
+    name: panel-app
+    buildCommand: pip install -r requiremnts.txt
+    startCommand: panel serve senti_app.py --port $PORT --allow-websocket-origin your-app-url.onrender.com

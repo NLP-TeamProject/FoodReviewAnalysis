@@ -15,13 +15,13 @@ with open("tfidf_vectorizer.pkl", "rb") as f:
 with open("model.pkl", "rb") as f:
     model = pickle.load(f)
 
+
 # Function for sentiment prediction
 def predict_sentiment(review):
     review = preprocessing(review)
     x = vectorizer.transform([review])
     prediction = model.predict(x)[0]
     return prediction
-
 # Text preprocessing function
 def preprocessing(text):
     # Your text preprocessing steps go here
